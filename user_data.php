@@ -62,7 +62,7 @@ foreach (csv_content_parser($content4) as $fields) {
 print_r($data);
 
 //The two lines below have refused to print the last input in my CSV file.
-So, I keep trying to solve it.
+//So, I keep trying to solve it.
 
 print_r (end($data));
 print_r ($data[array_key_last($data)]);
