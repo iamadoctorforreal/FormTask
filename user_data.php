@@ -39,14 +39,6 @@ $file_open2 = fopen($filename2, "r");
 
 
 
-
-
-$content = fread($file_open2, filesize($filename2));
-
-$content2[] = fgetcsv($file_open2, filesize($filename2), ",");
-
-
-
 function csv_content_parser($content4) {
 	foreach (explode("\n", $content4)as $line){
 		yield str_getcsv($line);
@@ -59,13 +51,16 @@ foreach (csv_content_parser($content4) as $fields) {
 	array_push($data, $fields);
 }
 
-print_r($data);
 
-//The two lines below have refused to print the last input in my CSV file.
-//So, I keep trying to solve it.
+//It works just fine now, initially I thought I had to return the latest input in the userdata.csv file, but it turns out all I had to do was just print_r the form input, I hope I am right
 
-print_r (end($data));
-print_r ($data[array_key_last($data)]);
+print_r( "SN: ".$form_data['sr_no'].
+"<br/> Name: ".$form_data['name'].
+"<br/>Email: ".$form_data['email'].
+"<br/>Date of Birth: ".
+$form_data['date'].
+"<br/>Gender: ".$form_data['gender'].
+"<br/>Country: ".$form_data['country']);
 
 
 	fclose($file_open2);
